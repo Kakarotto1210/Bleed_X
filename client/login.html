@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BleedX — Authentication</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -31,51 +32,81 @@
             }
         };
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet" />
+
     <style>
-        body { background-color: #020205; color: #ffffff; font-family: 'Inter', sans-serif; }
+        body {
+            background-color: #020205;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+
         .abstract-bg {
-            background: 
+            background:
                 radial-gradient(circle at 15% 50%, rgba(244, 63, 94, 0.4), transparent 50%),
                 radial-gradient(circle at 85% 30%, rgba(192, 132, 252, 0.3), transparent 50%),
                 radial-gradient(circle at 50% 80%, rgba(0, 212, 255, 0.2), transparent 50%);
             background-color: #07070f;
             animation: pulse-bg 15s ease-in-out infinite alternate;
         }
+
         @keyframes pulse-bg {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 100%; }
+            0% {
+                background-position: 0% 0%;
+            }
+
+            100% {
+                background-position: 100% 100%;
+            }
         }
-        
+
         .glass-panel {
             background: rgba(16, 16, 31, 0.4);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
+
         /* Tab transitions */
-        .tab-content { display: none; animation: fadeIn 0.3s ease-in-out; }
-        .tab-content.active { display: block; }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
+
 <body class="min-h-screen flex text-gray-100">
 
     <!-- SPLIT LAYOUT: LEFT SIDE - ILLUSTRATION / GRADIENT -->
     <div class="hidden lg:flex lg:w-1/2 abstract-bg relative overflow-hidden items-center justify-center p-12">
         <div class="absolute inset-0 bg-dark-950/20 backdrop-blur-[2px]"></div>
-        
+
         <div class="relative z-10 max-w-lg glass-panel p-10 rounded-3xl shadow-2xl">
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-bleed-500 to-bleed-600 flex items-center justify-center text-3xl font-bold mb-6 shadow-lg shadow-bleed-500/30">💀</div>
+            <div
+                class="w-16 h-16 rounded-2xl bg-gradient-to-br from-bleed-500 to-bleed-600 flex items-center justify-center text-3xl font-bold mb-6 shadow-lg shadow-bleed-500/30">
+                💀</div>
             <h1 class="font-display text-5xl font-black mb-4">Bleed<span class="text-bleed-500">X</span></h1>
             <p class="text-xl text-gray-300 font-light leading-relaxed mb-8">
                 Welcome to the ultimate artificial intelligence financial terminal. Stop your money from bleeding.
             </p>
-            
+
             <div class="flex items-center gap-4 text-sm text-gray-400 font-medium">
                 <div class="flex -space-x-3">
                     <div class="w-8 h-8 rounded-full border-2 border-dark-800 bg-gray-700"></div>
@@ -89,60 +120,91 @@
 
     <!-- SPLIT LAYOUT: RIGHT SIDE - AUTH FORM -->
     <div class="flex-1 flex flex-col justify-center px-6 py-12 sm:px-12 lg:px-24 xl:px-32 relative bg-dark-950">
-        
+
         <!-- Mobile Logo -->
         <div class="lg:hidden flex items-center gap-2 mb-10">
             <div class="w-10 h-10 rounded-xl bg-bleed-500 flex items-center justify-center text-xl font-bold">💀</div>
-            <span class="font-display font-bold text-2xl tracking-tight">Bleed<span class="text-bleed-500">X</span></span>
+            <span class="font-display font-bold text-2xl tracking-tight">Bleed<span
+                    class="text-bleed-500">X</span></span>
         </div>
 
         <div class="w-full max-w-md mx-auto">
             <h2 class="text-3xl font-display font-bold mb-2">Get Started</h2>
             <p class="text-gray-400 text-sm mb-8">Access your financial intelligence dashboard.</p>
-            
+
             <!-- Tabs -->
             <div class="flex p-1 bg-dark-900 border border-gray-800 rounded-lg mb-8">
-                <button onclick="switchTab('login')" id="btn-login" class="flex-1 py-2 text-sm font-semibold rounded-md transition-all bg-dark-800 text-white shadow">Login</button>
-                <button onclick="switchTab('signup')" id="btn-signup" class="flex-1 py-2 text-sm font-semibold rounded-md transition-all text-gray-400 hover:text-white">Sign Up</button>
+                <button onclick="switchTab('login')" id="btn-login"
+                    class="flex-1 py-2 text-sm font-semibold rounded-md transition-all bg-dark-800 text-white shadow">Login</button>
+                <button onclick="switchTab('signup')" id="btn-signup"
+                    class="flex-1 py-2 text-sm font-semibold rounded-md transition-all text-gray-400 hover:text-white">Sign
+                    Up</button>
             </div>
 
             <!-- LOGIN FORM -->
-            <form id="form-login" class="tab-content active space-y-5" onsubmit="event.preventDefault(); goToApp('form-login');">
+            <form id="form-login" class="tab-content active space-y-5"
+                onsubmit="event.preventDefault(); goToApp('form-login');">
                 <div>
-                    <label class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Gmail Address</label>
-                    <input type="email" id="login-email" required pattern=".*@gmail\.com$" title="Only @gmail.com addresses are allowed." class="w-full px-4 py-3 bg-dark-900 border border-gray-800 rounded-xl focus:ring-2 focus:ring-bleed-500 focus:border-transparent outline-none transition-all placeholder-gray-600" placeholder="your.name@gmail.com">
+                    <label class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Gmail
+                        Address</label>
+                    <input type="email" id="login-email" required pattern=".*@gmail\.com$"
+                        title="Only @gmail.com addresses are allowed."
+                        class="w-full px-4 py-3 bg-dark-900 border border-gray-800 rounded-xl focus:ring-2 focus:ring-bleed-500 focus:border-transparent outline-none transition-all placeholder-gray-600"
+                        placeholder="your.name@gmail.com">
                 </div>
                 <div>
                     <div class="flex justify-between items-center mb-2">
                         <label class="block text-xs font-medium text-gray-400 uppercase tracking-wider">Password</label>
-                        <a href="#" class="text-xs text-bleed-400 hover:text-bleed-300 transition-colors">Forgot Password?</a>
+                        <a href="#" class="text-xs text-bleed-400 hover:text-bleed-300 transition-colors">Forgot
+                            Password?</a>
                     </div>
-                    <input type="password" id="login-pass" required minlength="8" title="Password must be at least 8 characters long" class="w-full px-4 py-3 bg-dark-900 border border-gray-800 rounded-xl focus:ring-2 focus:ring-bleed-500 focus:border-transparent outline-none transition-all placeholder-gray-600" placeholder="••••••••">
+                    <input type="password" id="login-pass" required minlength="8"
+                        title="Password must be at least 8 characters long"
+                        class="w-full px-4 py-3 bg-dark-900 border border-gray-800 rounded-xl focus:ring-2 focus:ring-bleed-500 focus:border-transparent outline-none transition-all placeholder-gray-600"
+                        placeholder="••••••••">
                 </div>
-                <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-bleed-600 to-bleed-500 hover:from-bleed-500 hover:to-bleed-400 text-white rounded-xl font-bold transition-all shadow-[0_0_15px_rgba(244,63,94,0.3)] hover:shadow-[0_0_25px_rgba(244,63,94,0.5)] mt-4">
+                <button type="submit"
+                    class="w-full py-3.5 bg-gradient-to-r from-bleed-600 to-bleed-500 hover:from-bleed-500 hover:to-bleed-400 text-white rounded-xl font-bold transition-all shadow-[0_0_15px_rgba(244,63,94,0.3)] hover:shadow-[0_0_25px_rgba(244,63,94,0.5)] mt-4">
                     Sign In
                 </button>
             </form>
 
             <!-- SIGN UP FORM -->
-            <form id="form-signup" class="tab-content space-y-4" onsubmit="event.preventDefault(); goToApp('form-signup');">
+            <form id="form-signup" class="tab-content space-y-4"
+                onsubmit="event.preventDefault(); goToApp('form-signup');">
                 <div>
-                    <label class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-1.5">Full Name</label>
-                    <input type="text" required class="w-full px-4 py-3 bg-dark-900 border border-gray-800 rounded-xl focus:ring-2 focus:ring-bleed-500 outline-none transition-all placeholder-gray-600" placeholder="John Doe">
+                    <label class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-1.5">Full
+                        Name</label>
+                    <input type="text" required
+                        class="w-full px-4 py-3 bg-dark-900 border border-gray-800 rounded-xl focus:ring-2 focus:ring-bleed-500 outline-none transition-all placeholder-gray-600"
+                        placeholder="John Doe">
                 </div>
                 <div>
-                    <label class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-1.5">Gmail Address</label>
-                    <input type="email" id="signup-email" required pattern=".*@gmail\.com$" title="Only @gmail.com addresses are allowed." class="w-full px-4 py-3 bg-dark-900 border border-gray-800 rounded-xl focus:ring-2 focus:ring-bleed-500 outline-none transition-all placeholder-gray-600" placeholder="your.name@gmail.com">
+                    <label class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-1.5">Gmail
+                        Address</label>
+                    <input type="email" id="signup-email" required pattern=".*@gmail\.com$"
+                        title="Only @gmail.com addresses are allowed."
+                        class="w-full px-4 py-3 bg-dark-900 border border-gray-800 rounded-xl focus:ring-2 focus:ring-bleed-500 outline-none transition-all placeholder-gray-600"
+                        placeholder="your.name@gmail.com">
                 </div>
                 <div>
-                    <label class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-1.5">Password</label>
-                    <input type="password" id="signup-pass" required minlength="8" title="Password must be at least 8 characters long" class="w-full px-4 py-3 bg-dark-900 border border-gray-800 rounded-xl focus:ring-2 focus:ring-bleed-500 outline-none transition-all placeholder-gray-600" placeholder="Create a password (min 8 chars)">
+                    <label
+                        class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-1.5">Password</label>
+                    <input type="password" id="signup-pass" required minlength="8"
+                        title="Password must be at least 8 characters long"
+                        class="w-full px-4 py-3 bg-dark-900 border border-gray-800 rounded-xl focus:ring-2 focus:ring-bleed-500 outline-none transition-all placeholder-gray-600"
+                        placeholder="Create a password (min 8 chars)">
                 </div>
                 <div>
-                    <label class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-1.5">Confirm Password</label>
-                    <input type="password" id="signup-confirm" required minlength="8" title="Password must be at least 8 characters long" class="w-full px-4 py-3 bg-dark-900 border border-gray-800 rounded-xl focus:ring-2 focus:ring-bleed-500 outline-none transition-all placeholder-gray-600" placeholder="Confirm your password">
+                    <label class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-1.5">Confirm
+                        Password</label>
+                    <input type="password" id="signup-confirm" required minlength="8"
+                        title="Password must be at least 8 characters long"
+                        class="w-full px-4 py-3 bg-dark-900 border border-gray-800 rounded-xl focus:ring-2 focus:ring-bleed-500 outline-none transition-all placeholder-gray-600"
+                        placeholder="Confirm your password">
                 </div>
-                <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-neon-purple to-bleed-500 hover:from-bleed-500 hover:to-bleed-400 text-white rounded-xl font-bold transition-all shadow-[0_0_15px_rgba(192,132,252,0.3)] hover:shadow-[0_0_25px_rgba(244,63,94,0.5)] mt-6">
+                <button type="submit"
+                    class="w-full py-3.5 bg-gradient-to-r from-neon-purple to-bleed-500 hover:from-bleed-500 hover:to-bleed-400 text-white rounded-xl font-bold transition-all shadow-[0_0_15px_rgba(192,132,252,0.3)] hover:shadow-[0_0_25px_rgba(244,63,94,0.5)] mt-6">
                     Create Account
                 </button>
             </form>
@@ -150,39 +212,55 @@
             <!-- Social Logins -->
             <div class="mt-8">
                 <div class="relative">
-                    <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-gray-800"></div></div>
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-800"></div>
+                    </div>
                     <div class="relative flex justify-center text-sm">
-                        <span class="px-3 bg-dark-950 text-gray-500 text-xs uppercase tracking-wider">Or continue with</span>
+                        <span class="px-3 bg-dark-950 text-gray-500 text-xs uppercase tracking-wider">Or continue
+                            with</span>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-3 gap-3 mt-6">
                     <!-- Google -->
-                    <button onclick="socialLogin('Google')" class="flex items-center justify-center p-3 bg-dark-900 border border-gray-800 hover:border-gray-600 rounded-xl transition-all hover:bg-gray-800">
+                    <button onclick="socialLogin('Google')"
+                        class="flex items-center justify-center p-3 bg-dark-900 border border-gray-800 hover:border-gray-600 rounded-xl transition-all hover:bg-gray-800">
                         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                            <path
+                                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                                fill="#4285F4" />
+                            <path
+                                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                                fill="#34A853" />
+                            <path
+                                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                                fill="#FBBC05" />
+                            <path
+                                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                                fill="#EA4335" />
                         </svg>
                     </button>
                     <!-- Apple -->
-                    <button onclick="socialLogin('Apple')" class="flex items-center justify-center p-3 bg-dark-900 border border-gray-800 hover:border-gray-600 rounded-xl transition-all hover:bg-gray-800">
+                    <button onclick="socialLogin('Apple')"
+                        class="flex items-center justify-center p-3 bg-dark-900 border border-gray-800 hover:border-gray-600 rounded-xl transition-all hover:bg-gray-800">
                         <svg class="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M16.365 7.14c-1.397.025-2.738-.767-3.468-1.986-.71-1.226-.706-2.612.008-3.738 1.408-.046 2.766.75 3.486 1.984.717 1.25.7 2.65-.026 3.74zM15 15.688c-.643.08-1.32.18-1.936.425C12.184 16.51 11.516 17 10.457 17c-1.042 0-1.748-.484-2.637-.872-.614-.24-1.282-.337-1.928-.4-2.82-.128-5.32 2.686-5.877 6.402C-.488 25.568 2.062 26 2.815 26c.71 0 1.286-.54 1.86-1.026.5-.425.998-.85 1.705-1.046.732-.204 1.45.2 2.152.593.615.342 1.238.69 1.91.82 2.887.41 5.34-2.072 6.06-4.945C16.946 18.636 15.65 15.618 15 15.688z"/>
+                            <path
+                                d="M16.365 7.14c-1.397.025-2.738-.767-3.468-1.986-.71-1.226-.706-2.612.008-3.738 1.408-.046 2.766.75 3.486 1.984.717 1.25.7 2.65-.026 3.74zM15 15.688c-.643.08-1.32.18-1.936.425C12.184 16.51 11.516 17 10.457 17c-1.042 0-1.748-.484-2.637-.872-.614-.24-1.282-.337-1.928-.4-2.82-.128-5.32 2.686-5.877 6.402C-.488 25.568 2.062 26 2.815 26c.71 0 1.286-.54 1.86-1.026.5-.425.998-.85 1.705-1.046.732-.204 1.45.2 2.152.593.615.342 1.238.69 1.91.82 2.887.41 5.34-2.072 6.06-4.945C16.946 18.636 15.65 15.618 15 15.688z" />
                         </svg>
                     </button>
                     <!-- Facebook -->
-                    <button onclick="socialLogin('Facebook')" class="flex items-center justify-center p-3 bg-dark-900 border border-gray-800 hover:border-gray-600 rounded-xl transition-all hover:bg-gray-800">
+                    <button onclick="socialLogin('Facebook')"
+                        class="flex items-center justify-center p-3 bg-dark-900 border border-gray-800 hover:border-gray-600 rounded-xl transition-all hover:bg-gray-800">
                         <svg class="h-6 w-6" fill="#1877F2" viewBox="0 0 24 24">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                         </svg>
                     </button>
                 </div>
             </div>
-            
+
         </div>
-        
+
     </div>
 
     <script>
@@ -190,7 +268,7 @@
             // UI Toggle
             document.getElementById('btn-login').className = tab === 'login' ? 'flex-1 py-2 text-sm font-semibold rounded-md transition-all bg-dark-800 text-white shadow' : 'flex-1 py-2 text-sm font-semibold rounded-md transition-all text-gray-400 hover:text-white';
             document.getElementById('btn-signup').className = tab === 'signup' ? 'flex-1 py-2 text-sm font-semibold rounded-md transition-all bg-dark-800 text-white shadow' : 'flex-1 py-2 text-sm font-semibold rounded-md transition-all text-gray-400 hover:text-white';
-            
+
             // Content Toggle
             document.getElementById('form-login').className = tab === 'login' ? 'tab-content active space-y-5' : 'tab-content space-y-5';
             document.getElementById('form-signup').className = tab === 'signup' ? 'tab-content active space-y-4' : 'tab-content space-y-4';
@@ -199,12 +277,12 @@
         function goToApp(formId) {
             const emailInput = formId === 'form-login' ? document.getElementById('login-email') : document.getElementById('signup-email');
             const passInput = formId === 'form-login' ? document.getElementById('login-pass') : document.getElementById('signup-pass');
-            
+
             if (emailInput && !emailInput.value.toLowerCase().endsWith('@gmail.com')) {
                 alert("Access Denied: BleedX currently only supports @gmail.com accounts.");
                 return;
             }
-            
+
             if (passInput && passInput.value.length < 8) {
                 alert("Password Error: Your password must be at least 8 characters long for security.");
                 return;
@@ -217,7 +295,7 @@
                     return;
                 }
             }
-            
+
             // For hackathon/demo purposes, immediately redirect to the application
             window.location.href = '/app';
         }
@@ -232,4 +310,5 @@
         }
     </script>
 </body>
+
 </html>
