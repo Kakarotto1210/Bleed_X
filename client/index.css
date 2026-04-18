@@ -1,0 +1,73 @@
+  body {
+      background-color: #0a0a0b;
+      color: #f4f4f5;
+      font-family: 'Inter', sans-serif;
+
+  }
+
+  ::-webkit-scrollbar {
+      width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+      background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: #27272a;
+      border-radius: 4px;
+  }
+
+  .card {
+      background: #121214;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+  }
+
+  .card:hover {
+      border-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+  }
+
+  .upload-area {
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.02);
+      transition: all 0.2s ease;
+  }
+
+  .upload-area:hover,
+  .upload-area.dragover {
+      border-color: #6366f1;
+      background: rgba(99, 102, 241, 0.05);
+  }
+
+  .gradient-text {
+      background: linear-gradient(135deg, #f4f4f5 0%, #a1a1aa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+  }
+
+  .btn-primary {
+      background: linear-gradient(to right, #6366f1, #4f46e5);
+      transition: opacity 0.2s ease, transform 0.1s ease;
+  }
+
+  .btn-primary:hover {
+      opacity: 0.9;
+  }
+
+  .btn-primary:active {
+      transform: scale(0.98);
+  }
+
+  /* Gauge */
+  .gauge-circle {
+      transition: stroke-dashoffset 1s ease-out, stroke 0.5s ease;
+  }
+
+  #dashboard,
+  #loading-state {
+      display: none;
+  }

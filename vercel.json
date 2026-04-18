@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server/main.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "client/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/analyze",
+      "dest": "/server/main.py"
+    },
+    {
+      "src": "/demo-analysis",
+      "dest": "/server/main.py"
+    },
+    {
+      "src": "/set-budget",
+      "dest": "/server/main.py"
+    },
+    {
+      "src": "/register-sms",
+      "dest": "/server/main.py"
+    },
+    {
+      "src": "/send-sms-report",
+      "dest": "/server/main.py"
+    },
+    {
+      "src": "/mark-transaction",
+      "dest": "/server/main.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/client/$1"
+    }
+  ]
+}
